@@ -6,13 +6,7 @@
 package lua
 
 /*
-#cgo CFLAGS: -I ${SRCDIR}/lua
-#cgo llua LDFLAGS: -llua
-#cgo luaa LDFLAGS: -llua -lm -ldl
-#cgo linux,!llua,!luaa LDFLAGS: -llua5.1
-#cgo darwin,!luaa pkg-config: lua5.1
-#cgo freebsd,!luaa LDFLAGS: -llua-5.1
-#cgo windows,!llua LDFLAGS: -L${SRCDIR} -llua -lmingwex -lmingw32
+#cgo pkg-config: luajit
 
 #include <lua.h>
 #include <stdlib.h>
@@ -564,8 +558,11 @@ func (L *State) ToPointer(index int) uintptr {
 
 // lua_tothread
 func (L *State) ToThread(index int) *State {
-	//TODO: find a way to link lua_State* to existing *State, return that
-	return &State{}
+	// FIXME: it is a right hack?
+	s := C.lua_tothread(L.s, C.int(index))
+	return &State{s, 0, nil, nil}
+	// TODO: find a way to link lua_State* to existing *State, return that
+	// return &State{}
 }
 
 // lua_touserdata
