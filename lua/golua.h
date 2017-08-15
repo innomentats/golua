@@ -21,12 +21,16 @@ lua_State* clua_newstate(void* goallocf);
 void clua_setallocf(lua_State* L, void* goallocf);
 
 void clua_openbase(lua_State* L);
-void clua_openio(lua_State* L);
 void clua_openmath(lua_State* L);
-void clua_openpackage(lua_State* L);
 void clua_openstring(lua_State* L);
 void clua_opentable(lua_State* L);
+void clua_openio(lua_State* L);
 void clua_openos(lua_State* L);
+void clua_openpackage(lua_State* L);
+void clua_opendebug(lua_State* L);
+void clua_openbit(lua_State* L);
+void clua_openjit(lua_State* L);
+void clua_openffi(lua_State* L);
 void clua_setexecutionlimit(lua_State* L, int n);
 
 int clua_isgofunction(lua_State *L, int n);

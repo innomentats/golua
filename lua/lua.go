@@ -597,19 +597,9 @@ func (L *State) OpenBase() {
 	C.clua_openbase(L.s)
 }
 
-// Calls luaopen_io
-func (L *State) OpenIO() {
-	C.clua_openio(L.s)
-}
-
 // Calls luaopen_math
 func (L *State) OpenMath() {
 	C.clua_openmath(L.s)
-}
-
-// Calls luaopen_package
-func (L *State) OpenPackage() {
-	C.clua_openpackage(L.s)
 }
 
 // Calls luaopen_string
@@ -622,9 +612,39 @@ func (L *State) OpenTable() {
 	C.clua_opentable(L.s)
 }
 
+// Calls luaopen_io
+func (L *State) OpenIO() {
+	C.clua_openio(L.s)
+}
+
 // Calls luaopen_os
 func (L *State) OpenOS() {
 	C.clua_openos(L.s)
+}
+
+// Calls luaopen_package
+func (L *State) OpenPackage() {
+	C.clua_openpackage(L.s)
+}
+
+// Calls luaopen_debug
+func (L *State) OpenDebug() {
+	C.clua_opendebug(L.s)
+}
+
+// Calls luaopen_bit
+func (L *State) OpenBit() {
+	C.clua_openbit(L.s)
+}
+
+// Calls luaopen_jit
+func (L *State) OpenJIT() {
+	C.clua_openjit(L.s)
+}
+
+// Calls luaopen_ffi
+func (L *State) OpenFFI() {
+	C.clua_openffi(L.s)
 }
 
 // Sets the maximum number of operations to execute at instrNumber, after this the execution ends

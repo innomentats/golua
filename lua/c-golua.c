@@ -338,24 +338,10 @@ void clua_openbase(lua_State* L)
 	clua_hide_pcall(L);
 }
 
-void clua_openio(lua_State* L)
-{
-	lua_pushcfunction(L,&luaopen_io);
-	lua_pushstring(L,"io");
-	lua_call(L, 1, 0);
-}
-
 void clua_openmath(lua_State* L)
 {
 	lua_pushcfunction(L,&luaopen_math);
 	lua_pushstring(L,"math");
-	lua_call(L, 1, 0);
-}
-
-void clua_openpackage(lua_State* L)
-{
-	lua_pushcfunction(L,&luaopen_package);
-	lua_pushstring(L,"package");
 	lua_call(L, 1, 0);
 }
 
@@ -373,10 +359,52 @@ void clua_opentable(lua_State* L)
 	lua_call(L, 1, 0);
 }
 
+void clua_openio(lua_State* L)
+{
+	lua_pushcfunction(L,&luaopen_io);
+	lua_pushstring(L,"io");
+	lua_call(L, 1, 0);
+}
+
 void clua_openos(lua_State* L)
 {
 	lua_pushcfunction(L,&luaopen_os);
 	lua_pushstring(L,"os");
+	lua_call(L, 1, 0);
+}
+
+void clua_openpackage(lua_State* L)
+{
+	lua_pushcfunction(L,&luaopen_package);
+	lua_pushstring(L,"package");
+	lua_call(L, 1, 0);
+}
+
+void clua_opendebug(lua_State* L)
+{
+	lua_pushcfunction(L,&luaopen_debug);
+	lua_pushstring(L,"debug");
+	lua_call(L, 1, 0);
+}
+
+void clua_openbit(lua_State* L)
+{
+	lua_pushcfunction(L,&luaopen_bit);
+	lua_pushstring(L,"bit");
+	lua_call(L, 1, 0);
+}
+
+void clua_openjit(lua_State* L)
+{
+	lua_pushcfunction(L,&luaopen_jit);
+	lua_pushstring(L,"jit");
+	lua_call(L, 1, 0);
+}
+
+void clua_openffi(lua_State* L)
+{
+	lua_pushcfunction(L,&luaopen_ffi);
+	lua_pushstring(L,"ffi");
 	lua_call(L, 1, 0);
 }
 
