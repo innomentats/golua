@@ -67,6 +67,7 @@ func TestCheckStringFail(t *testing.T) {
 	defer L.Close()
 
 	Test := func(L *State) int {
+		L.PushNil()
 		L.CheckString(-1)
 		return 0
 	}
