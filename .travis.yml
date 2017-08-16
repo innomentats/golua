@@ -1,10 +1,7 @@
 language: go
 dist: trusty
 before_install:
-  - sudo add-apt-repository ppa:vbernat/haproxy-1.6 -y
-  - sudo apt-get -qq update
-  - sudo apt-get install -y liblua5.1-dev
-  - sudo apt-get install -y liblua5.2-dev
-  - sudo apt-get install -y liblua5.3-dev
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq libluajit-5.1-dev
 install: true
-script: go test -v  github.com/aarzilli/golua/lua
+script: go test -v github.com/innomentats/golua/lua

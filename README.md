@@ -1,21 +1,15 @@
-Go Bindings for the lua C API
+Go Bindings for the [luajit-2.0.x](http://luajit.org/luajit.html) C API
 =========================
 
-[![Build Status](https://travis-ci.org/aarzilli/golua.svg?branch=master)](https://travis-ci.org/aarzilli/golua)
+[![Build Status](https://travis-ci.org/innomentats/golua.svg?branch=master)](https://travis-ci.org/innomentats/golua)
 
 Simplest way to install:
 
-	# go get -u github.com/aarzilli/golua/lua
-
-Will work as long as your compiler can find a shared object called lua5.1 on linux, or lua anywhere else.
-If your linux system uses "lua" as the shared object name for lua (for example, Fedora Core does this) you can install using:
-
-	# go get -u -tags llua github.com/aarzilli/golua/lua
-
+	# go get -u github.com/innomentats/golua/lua
 
 You can then try to run the examples:
 
-	$ cd /usr/local/go/src/pkg/github.com/aarzilli/golua/example/
+	$ cd /usr/local/go/src/pkg/github.com/innomentats/golua/example/
 	$ go run basic.go
 	$ go run alloc.go
 	$ go run panic.go
@@ -102,24 +96,6 @@ ON THREADS AND COROUTINES
 
 'lua.State' is not thread safe, but the library itself is. Lua's coroutines exist but (to my knowledge) have never been tested and are likely to encounter the same problems that errors have, use at your own peril.
 
-ODDS AND ENDS
----------------------
-
-* Support for lua 5.2 is in the lua5.2 branch, this branch only supports lua5.1.
-* Support for lua 5.3 is in the lua5.3 branch.
-* Compiling from source yields only a static link library (liblua.a), you can either produce the dynamic link library on your own or use the `luaa` build tag.
-
-LUAJIT
----------------------
-
-To link with [luajit-2.0.x](http://luajit.org/luajit.html), you can use CGO_CFLAGS and CGO_LDFLAGS environment variables
-
-```
-$ CGO_CFLAGS=`pkg-config luajit --cflags`
-$ CGO_LDFLAGS=`pkg-config luajit --libs`
-$ go get -f -u github.com/aarzilli/golua/lua
-```
-
 CONTRIBUTORS
 ---------------------
 
@@ -137,12 +113,6 @@ CONTRIBUTORS
 * Admin36
 * Pierre Neidhardt (@Ambrevar)
 * HuangWei (@huangwei1024)
-
-SEE ALSO
----------------------
-
-- [Luar](https://github.com/stevedonovan/luar/) is a reflection layer on top of golua API providing a simplified way to publish go functions to a Lua VM.
-- [Golua unicode](https://bitbucket.org/ambrevar/golua/) is an extension library that adds unicode support to golua and replaces lua regular expressions with re2.
 
 Licensing
 -------------
